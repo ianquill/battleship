@@ -11,13 +11,14 @@ const gameboard = () => {
             const newShip = ship(length);
             this.shipYard.push(newShip);
             coordinates.forEach((x, y) => {
-                this.board[y][x] = 0 // ship name or something?
+                this.board[y][x].occupant = /* ship name? */ 0;
             })
         }
     };
     const boardResolution = 10;
+    // initialize board values
     for (let i = 0; i < boardResolution; i++) {
-        boardObject.board.push(new Array(boardResolution).fill('empty'));
+        boardObject.board.push(new Array(boardResolution).fill({'occupant': 'none', 'hit': false}));
     };
 
 
