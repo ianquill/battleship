@@ -5,12 +5,12 @@ const ship = (length) => {
             // hit
             if (!this.hits[number])
             this.hits[number] = true;
-
-            if (this.hits[0] === true && allEqual(this.hits)) {
-                this.isSunk = true;
-            }
         },
-        isSunk: false
+        isSunk() {
+            if (this.hits[0] === true && allEqual(this.hits)) {
+                return true;
+            } return false;
+        }
     };
 
     const allEqual = arr => arr.every(val => val === arr[0]);
