@@ -1,6 +1,7 @@
-const ship = (length) => {
+const ship = (type, length) => {
     const object = {
         length,
+        type,
         hit(number) {
             // hit
             if (!this.hits[number])

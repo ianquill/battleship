@@ -2,15 +2,15 @@ const ship = require('./ship');
 
 
 test('returns proper length', () => {
-    expect(ship(3).length).toBe(3);
+    expect(ship('destroyer', 3).length).toBe(3);
 })
 
 test('returns an array for hits', () => {
-    expect(ship(4)).toHaveProperty( 'hits', [ false, false, false, false ])
+    expect(ship('battleship', 4)).toHaveProperty( 'hits', [ false, false, false, false ])
 });
 
 test('hit is functioning correctly', () => {
-    const testShip = ship(5);
+    const testShip = ship('carrier', 5);
     expect(testShip).toHaveProperty( 'hits', [false, false, false, false, false]);
     testShip.hit(1);
     expect(testShip).toHaveProperty('hits', [false, true, false, false, false]); 
@@ -28,7 +28,7 @@ test('hit is functioning correctly', () => {
 // })
 
 test('isSunk is functioning correctly', () => {
-    const testShip = ship(3);
+    const testShip = ship('destroyer', 3);
     expect(testShip.isSunk()).toBe(false);
     testShip.hit(0);
     testShip.hit(1);

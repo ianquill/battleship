@@ -7,18 +7,21 @@ const gameboard = () => {
         checkBoard() {
             return this.board.map((x) => x.map((y) => y));
         },
-        placeShip(length, coordinates) {
-            const newShip = ship(length);
-            this.shipYard.push(newShip);
+        placeShip(type, length, coordinates) {                    // needs to have logic that makes
+            const newShip = ship(type, length);                   //   sure that ship can be placed
             coordinates.forEach((x, y) => {
-                this.board[y][x].occupant = /* ship name? */ 0;
+
+                this.board[y][x].occupant = type;
             })
+            this.shipYard.push(newShip);
         }
     };
     const boardResolution = 10;
     // initialize board values
     for (let i = 0; i < boardResolution; i++) {
-        boardObject.board.push(new Array(boardResolution).fill({'occupant': 'none', 'hit': false}));
+        boardObject.board
+        .push(new Array(boardResolution)
+        .fill({'occupant': 'none', 'hit': false}));
     };
 
 
